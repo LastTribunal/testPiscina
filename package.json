@@ -1,9 +1,6 @@
 {
   "dependencies": {
-    "js2xmlparser": "^4.0.2",
     "path": "^0.12.7",
-    "piscina": "^3.2.0",
-    "promise-timers": "^1.0.1",
-    "util": "^0.12.4"
+    "piscina": "^3.2.0"
   }
 }
