@@ -3,8 +3,8 @@ const { setTimeout } = require('timers/promises');
 module.exports = async ({
   a,
   b,
-  c
+  ms
 }) => {
-  await setTimeout(c, 'resolved');
+  await setTimeout(ms, 'resolved');
   return a + b;
 };

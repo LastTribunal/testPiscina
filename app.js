@@ -12,19 +12,22 @@ const piscina = new Piscina({
     const thread1 =  piscina.run({
         a: 4,
         b: 6,
-        c: 1000
+        ms: 1000
     });
     const thread2 =  piscina.run({
         a: 4,
         b: 54,
-        c: 1000
+        ms: 1000
     });
     const thread3 =  piscina.run({
         a: 4,
         b: 666,
-        c: 1000
+        ms: 1000
     });
 
+   var start= Date.now();
    var result = await Promise.all([thread1, thread2,thread3]);
+   
    console.log(result);
+   console.log(`execution time: ${Date.now()-start}`);
 })();
