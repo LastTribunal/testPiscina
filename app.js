@@ -3,8 +3,8 @@ const path = require('path');
 const Piscina = require('piscina');
 const _ = require('lodash');
 
-const maxThreads = 100;
-const totalThreads = 100;
+const maxThreads = 10;
+const totalThreads = 10;
 const maxThreadDuration = 10000;
 
 const piscina = new Piscina({
@@ -14,7 +14,7 @@ const piscina = new Piscina({
 
 (async () => {
     var allThreads = [];
-    for (let index = 0; index < totalThreads + 1; index++) {
+    for (let index = 0; index != totalThreads; index++) {
         var thread = piscina.run({
             ms: Math.floor(Math.random() * maxThreadDuration)
         });
