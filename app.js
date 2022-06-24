@@ -14,7 +14,7 @@ const piscina = new Piscina({
 
 (async () => {
     var allThreads = [];
-    for (let index = 0; index != totalThreads; index++) {
+    for (let index = 0; index < totalThreads; index++) {
         var thread = piscina.run({
             ms: Math.floor(Math.random() * maxThreadDuration)
         });
