@@ -3,8 +3,9 @@ const path = require('path');
 const Piscina = require('piscina');
 const _ = require('lodash');
 
-const maxThreads = 10;
-const totalThreads = 10;
+const maxThreads = 100;
+const totalThreads = 100;
+const maxThreadDuration = 10000;
 
 const piscina = new Piscina({
     filename: path.resolve(__dirname, "worker.js"),
@@ -12,21 +13,13 @@ const piscina = new Piscina({
 });
 
 (async () => {
-   
-   
     var allThreads = [];
-    for (let index = 0; index < totalThreads+1; index++) {
+    for (let index = 0; index < totalThreads + 1; index++) {
         var thread = piscina.run({
-            ms: getRandomInt(10000)
+            ms: Math.floor(Math.random() * maxThreadDuration)
         });
         allThreads.push(thread);
     }
-
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * max);
-    }
-
-
 
     var start = Date.now();
     var result = await Promise.all(allThreads);
