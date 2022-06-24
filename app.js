@@ -5,7 +5,7 @@ const Piscina = require('piscina');
 
 const piscina = new Piscina({
     filename: path.resolve(__dirname, "worker.js"),
-    maxThreads: 3
+    maxThreads: 2
 });
 
 (async () => {
@@ -25,8 +25,13 @@ const piscina = new Piscina({
         ms: 1000
     });
 
+   var allThreads =[];
+   allThreads.push(thread1);
+   allThreads.push(thread2);
+   allThreads.push(thread3); 
+
    var start= Date.now();
-   var result = await Promise.all([thread1, thread2,thread3]);
+   var result = await Promise.all(allThreads);
    
    console.log(result);
    console.log(`execution time: ${Date.now()-start}`);
