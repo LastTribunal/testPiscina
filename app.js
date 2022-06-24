@@ -13,13 +13,10 @@ const piscina = new Piscina({
    
     var allThreads = [];
     for (let index = 0; index< 10; index++) {
-
-       
         var thread = piscina.run({
             ms: getRandomInt(10000)
         });
         allThreads.push(thread);
-
     }
 
     function getRandomInt(max) {
