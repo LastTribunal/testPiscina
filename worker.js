@@ -6,5 +6,6 @@ module.exports = async ({
   ms
 }) => {
   await setTimeout(ms);
+  console.dir(ms);
   return ms;
 };
