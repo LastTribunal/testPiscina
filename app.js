@@ -1,11 +1,11 @@
 /*jshint esversion: 9 */
 const path = require('path');
 const Piscina = require('piscina');
-
+const _ = require('lodash');
 
 const piscina = new Piscina({
     filename: path.resolve(__dirname, "worker.js"),
-    maxThreads: 10
+    maxThreads: 1
 });
 
 (async () => {
@@ -29,5 +29,6 @@ const piscina = new Piscina({
     var result = await Promise.all(allThreads);
 
     console.log(result);
-    console.log(`execution time: ${Date.now()-start}`);
+    console.log(`thread execution time sum: ${_.sum(result)}`);
+    console.log(`total execution time: ${Date.now()-start}`);
 })();
